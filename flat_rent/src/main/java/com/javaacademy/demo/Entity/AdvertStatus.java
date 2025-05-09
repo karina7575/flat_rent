@@ -1,6 +1,6 @@
-package com.javaacademy.demo.Entity;
-
-public enum AdvertStatus {
-    ACTIVE,
-    ARCHIVED;
-}
+//package com.javaacademy.demo.Entity;
+//
+//public enum AdvertStatus {
+//    ACTIVE,
+//    ARCHIVED;
+//}
