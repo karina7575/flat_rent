@@ -1,5 +1,6 @@
-package com.javaacademy.demo.Entity;
+package com.javaacademy.demo.entity;
 
+import com.javaacademy.demo.entity.enums.AdvertStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
  * Объявление
  */
 @Entity
+@ToString
 public class Advert {
 
     @Id
@@ -31,6 +33,7 @@ public class Advert {
     private AdvertStatus advertStatus;                    //статус (активно или архивное)
 
     //@Column(nullable = false, unique = true)
+    @ToString.Exclude
     @OneToOne
     @JoinColumn(name = "apartment_id")
     private Apartment apartment;                          //ссылка на помещение

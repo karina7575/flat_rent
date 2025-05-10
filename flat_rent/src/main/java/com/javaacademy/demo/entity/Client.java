@@ -1,4 +1,4 @@
-package com.javaacademy.demo.Entity;
+package com.javaacademy.demo.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,11 +6,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import lombok.ToString;
 
 /**
  * Клиент
  */
 @Entity
+@ToString
 public class Client {
 
     @Id
@@ -23,6 +25,7 @@ public class Client {
     @Column(nullable = false, unique = true)
     private String email;                         //email клиента (УНИКАЛЬНЫЙ)
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "client")
     private Booking booking;
 

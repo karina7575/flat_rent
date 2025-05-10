@@ -1,4 +1,4 @@
-package com.javaacademy.demo.Entity;
+package com.javaacademy.demo.entity.enums;
 
 public enum ApartmentLayout {
     ONE_ROOM,
