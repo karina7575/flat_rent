@@ -10,19 +10,24 @@ import com.javaacademy.demo.repository.AdvertRepository;
 import com.javaacademy.demo.repository.ClientRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(uses = {AdvertMapperMapstruct.class, ApartmentMapperMapstruct.class})
+@Mapper(uses = {AdvertMapperMapstruct.class, ApartmentMapperMapstruct.class},
+        componentModel = MappingConstants.ComponentModel.SPRING)
 public abstract class BookingMapperMapstruct {
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
     private AdvertRepository advertRepository;
 
-    @Mapping(target = "client", source = "clientId", qualifiedByName = "getClient")
+    @Mapping(target = "client", source = "clientDto")
     @Mapping(target = "advert", source = "advertId", qualifiedByName = "getAdvert")
-    public abstract Booking tiEntityWithRelation(BookingDto bookingDto);
+    @Mapping(target = "bookingPrice", ignore = true)
+    @Mapping(target = "startBookingDate", source = "dateStart")
+    @Mapping(target = "finishBookingDate", source = "dateFinish")
+    public abstract Booking toEntityWithRelation(BookingDto bookingDto);
 
     @Mapping(target = "clientDto", source = "client")
     @Mapping(target = "advertDtoResponse", source = "advert")

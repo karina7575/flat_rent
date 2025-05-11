@@ -8,10 +8,11 @@ import com.javaacademy.demo.entity.Apartment;
 import com.javaacademy.demo.repository.ApartmentRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(uses = {ApartmentMapperMapstruct.class})
+@Mapper(uses = {ApartmentMapperMapstruct.class}, componentModel = MappingConstants.ComponentModel.SPRING)
 public abstract class AdvertMapperMapstruct {
 
     @Autowired
