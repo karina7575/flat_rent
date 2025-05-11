@@ -1,6 +1,6 @@
 package com.javaacademy.demo.service;
 
-import com.javaacademy.demo.FilledIdException;
+import com.javaacademy.demo.exception.FilledIdException;
 import com.javaacademy.demo.dto.AdvertDtoResponse;
 import com.javaacademy.demo.dto.AdvertDto;
 import com.javaacademy.demo.entity.Advert;

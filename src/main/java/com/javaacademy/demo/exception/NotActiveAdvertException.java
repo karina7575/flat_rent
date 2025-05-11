@@ -1,4 +1,4 @@
-package com.javaacademy.demo;
+package com.javaacademy.demo.exception;
 
 import lombok.experimental.StandardException;
 

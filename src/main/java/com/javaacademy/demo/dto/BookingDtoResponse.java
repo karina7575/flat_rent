@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookingDto {
+public class BookingDtoResponse {
     private Integer id;
     private LocalDateTime startBookingDate;     //дата начала бронирования
     private LocalDateTime finishBookingDate;    //дата окончания бронирования
-    private Integer clientId;                   //ссылка на клиента
-    private Integer advertId;                   //ссылка на объявление
+    private ClientDto clientDto;                //ссылка на клиента
+    private AdvertDtoResponse advertDtoResponse;                //ссылка на объявление
     private BigDecimal bookingPrice;            //стоимость всего бронирования
 }

@@ -1,6 +1,6 @@
 package com.javaacademy.demo.mapper;
 
-import com.javaacademy.demo.EntityNotFoundException;
+import com.javaacademy.demo.exception.EntityNotFoundException;
 import com.javaacademy.demo.dto.AdvertDtoResponse;
 import com.javaacademy.demo.dto.AdvertDto;
 import com.javaacademy.demo.entity.Advert;
@@ -11,7 +11,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(uses = {ApartmentMapperMapstruct.class, BookingMapperMapstruct.class})
+@Mapper(uses = {ApartmentMapperMapstruct.class})
 public abstract class AdvertMapperMapstruct {
 
     @Autowired

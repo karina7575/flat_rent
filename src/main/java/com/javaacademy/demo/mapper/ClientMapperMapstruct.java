@@ -4,7 +4,7 @@ import com.javaacademy.demo.dto.ClientDto;
 import com.javaacademy.demo.entity.Client;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = {BookingMapperMapstruct.class})
+@Mapper
 public interface ClientMapperMapstruct {
 
     ClientDto toDto(Client client);
