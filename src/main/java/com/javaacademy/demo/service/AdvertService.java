@@ -8,6 +8,7 @@ import com.javaacademy.demo.entity.Advert;
 import com.javaacademy.demo.mapper.AdvertMapperMapstruct;
 import com.javaacademy.demo.repository.AdvertRepository;
 import com.javaacademy.demo.repository.ApartmentRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,10 +17,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class AdvertService {
-    private AdvertRepository advertRepository;
-    private ApartmentRepository apartmentRepository;
-    private AdvertMapperMapstruct advertMapperMapstruct;
+    private final AdvertRepository advertRepository;
+    private final ApartmentRepository apartmentRepository;
+    private final AdvertMapperMapstruct advertMapperMapstruct;
     private static final int PAGE_SIZE = 10;
 
     public AdvertDtoResponse saveAdvert(AdvertDto advertDto) {

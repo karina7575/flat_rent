@@ -14,7 +14,7 @@ import org.mapstruct.MappingConstants;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(uses = {AdvertMapperMapstruct.class, ApartmentMapperMapstruct.class},
+@Mapper(uses = {AdvertMapperMapstruct.class, ClientMapperMapstruct.class},
         componentModel = MappingConstants.ComponentModel.SPRING)
 public abstract class BookingMapperMapstruct {
     @Autowired
@@ -25,8 +25,6 @@ public abstract class BookingMapperMapstruct {
     @Mapping(target = "client", source = "clientDto")
     @Mapping(target = "advert", source = "advertId", qualifiedByName = "getAdvert")
     @Mapping(target = "bookingPrice", ignore = true)
-    @Mapping(target = "startBookingDate", source = "dateStart")
-    @Mapping(target = "finishBookingDate", source = "dateFinish")
     public abstract Booking toEntityWithRelation(BookingDto bookingDto);
 
     @Mapping(target = "clientDto", source = "client")

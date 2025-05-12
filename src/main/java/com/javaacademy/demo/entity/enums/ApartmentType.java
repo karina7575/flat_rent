@@ -1,6 +1,6 @@
 package com.javaacademy.demo.entity.enums;
 
-public enum ApartmentLayout {
+public enum ApartmentType {
     ONLY_ROOM,
     ONE_ROOM,
     TWO_ROOM,
