@@ -19,11 +19,8 @@ public class AdvertDtoResponse {
     @Schema(description = "цена за ночь")
     private BigDecimal price;
 
-    @Schema(description = "статус (активно или архивное)")
-    @JsonProperty("is_active")
-    private Boolean isActive;
-
     @Schema(description = "ссылка на помещение")
+    @JsonProperty("apartment")
     private ApartmentDto apartmentDto;
 
     @Schema(description = "описание объявления")

@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Builder
 @Data
@@ -19,10 +19,10 @@ public class BookingDtoResponse {
     private Integer id;
 
     @Schema(description = "дата начала бронирования")
-    private LocalDateTime startBookingDate;
+    private LocalDate startBookingDate;
 
     @Schema(description = "дата окончания бронирования")
-    private LocalDateTime finishBookingDate;
+    private LocalDate finishBookingDate;
 
     @Schema(description = "ссылка на клиента")
     private ClientDto clientDto;

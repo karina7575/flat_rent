@@ -34,11 +34,11 @@ public class BookingDto {
     @JsonProperty("date_start")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @NonNull
-    private LocalDate dateStart;
+    private LocalDate startBookingDate;
 
     @Schema(description = "дата окончания бронирования")
     @JsonProperty("date_finish")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @NonNull
-    private LocalDate dateFinish;
+    private LocalDate finishBookingDate;
 }

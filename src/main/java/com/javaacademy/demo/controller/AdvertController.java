@@ -43,7 +43,8 @@ public class AdvertController {
         return advertService.saveAdvert(advertDto);
     }
 
-    @Operation(summary = "Получение объявлений", description = "Получение части объявлений в выбранном городе")@ApiResponses({
+    @Operation(summary = "Получение объявлений",
+            description = "Получение части объявлений в выбранном городе")@ApiResponses({
             @ApiResponse(responseCode = "200", description = "Успешный поиск по городу.",
                     content = @Content(
                             mediaType = "application/json",

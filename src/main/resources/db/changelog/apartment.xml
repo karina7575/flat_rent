@@ -19,7 +19,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="house_number" type="int">
+            <column name="house_number" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
 
@@ -28,6 +28,71 @@
             </column>
 
             <column name="rooms" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="advert">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="advert_id_pk"/>
+            </column>
+
+            <column name="price" type="numeric(10,2)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="is_active" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="apartment_id" type="int">
+                <constraints referencedTableName="apartment" referencedColumnNames="id"
+                             foreignKeyName="apartment_id_fk" nullable="false"/>
+            </column>
+
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="client">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="client_id_pk" nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="booking">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="booking_id_pk"/>
+            </column>
+
+            <column name="date_start" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date_finish" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="client_id" type="int">
+                <constraints referencedTableName="client" referencedColumnNames="id"
+                             foreignKeyName="client_id_fk" nullable="false"/>
+            </column>
+
+            <column name="advert_id" type="int">
+                <constraints referencedTableName="advert" referencedColumnNames="id"
+                             foreignKeyName="advert_id_fk" nullable="false"/>
+            </column>
+
+            <column name="result_price" type="numeric(10,2)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

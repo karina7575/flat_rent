@@ -53,7 +53,7 @@ public class BookingController {
     })
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Page<BookingDtoResponse> findAllByCity(
+    public Page<BookingDtoResponse> findAllByEmail(
             @RequestParam(defaultValue = "0") Integer pageNumber,
             @RequestParam String email) {
         return bookingService.findAllByEmail(pageNumber, email);

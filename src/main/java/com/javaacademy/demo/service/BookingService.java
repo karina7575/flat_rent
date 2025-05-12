@@ -20,11 +20,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 import java.util.Optional;
-
 import static java.math.BigDecimal.valueOf;
 
 @Slf4j
@@ -38,6 +38,7 @@ public class BookingService {
     private final ClientRepository clientRepository;
     private static final int PAGE_SIZE = 20;
 
+    @Transactional
     public BookingDtoResponse saveBooking(BookingDto bookingDto) {
         if (bookingDto.getId() != null) {
             throw new FilledIdException("ID бронирования должен быть null");
@@ -61,6 +62,7 @@ public class BookingService {
         return bookingMapperMapstruct.toDto(booking);
     }
 
+    @Transactional(readOnly = true)
     public Page<BookingDtoResponse> findAllByEmail(Integer pageNumber, String email) {
         PageRequest pageRequest = PageRequest.of(pageNumber, PAGE_SIZE);
         Page<Booking> bookings = bookingRepository.findAllByClientEmail(email, pageRequest);
@@ -69,18 +71,19 @@ public class BookingService {
     }
 
     private BigDecimal calculateResultPrice(Booking booking) {
-        long period = ChronoUnit.DAYS.between(booking.getStartBookingDate(), booking.getFinishBookingDate());
+        //long period = DAYS.between(booking.getStartBookingDate(), booking.getFinishBookingDate());
+        long period = booking.getStartBookingDate().until(booking.getFinishBookingDate(), ChronoUnit.DAYS);
         return booking.getAdvert().getPrice().multiply(valueOf(period));
     }
 
     private void checkDates(BookingDto bookingDto) {
-        if (bookingDto.getDateStart().isAfter(bookingDto.getDateFinish())) {
+        if (bookingDto.getStartBookingDate().isAfter(bookingDto.getFinishBookingDate())) {
             throw new IntersectionDateException("Дата начала должна быть раньше даты окончания");
         }
         if (!bookingRepository.canBook(
                 bookingDto.getAdvertId(),
-                bookingDto.getDateStart(),
-                bookingDto.getDateFinish())) {
+                bookingDto.getStartBookingDate(),
+                bookingDto.getFinishBookingDate())) {
             throw new IntersectionDateException("Невозможно забронировать в эти даты.");
         }
         log.trace("Выполнена проверка дат.");

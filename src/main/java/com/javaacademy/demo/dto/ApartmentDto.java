@@ -1,6 +1,7 @@
 package com.javaacademy.demo.dto;
 
-import com.javaacademy.demo.entity.enums.ApartmentLayout;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.javaacademy.demo.entity.enums.ApartmentType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,17 +19,19 @@ public class ApartmentDto {
     private Integer id;
 
     @Schema(description = "город")
+    @JsonProperty("city")
     private String city;
 
     @Schema(description = "улица")
     private String street;
 
     @Schema(description = "дом")
-    private Integer house;
+    private String house;
 
     @Schema(description = "корпус")
     private String building;
 
     @Schema(description = "количество комнат")
-    private ApartmentLayout rooms;
+    @JsonProperty("apartment_type")
+    private ApartmentType rooms;
 }

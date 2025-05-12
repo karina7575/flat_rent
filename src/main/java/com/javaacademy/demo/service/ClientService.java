@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ClientService {
 
-    private ClientRepository clientRepository;
-    private ClientMapperMapstruct clientMapperMapstruct;
+    private final ClientRepository clientRepository;
+    private final ClientMapperMapstruct clientMapperMapstruct;
 
     public ClientDto save(ClientDto clientDto) {
         if (clientDto.getId() != null) {
